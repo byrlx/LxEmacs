@@ -1,6 +1,8 @@
 ;;我的emacs环境入口
 ;;Author: luis404(luisxu404@gmail.com)
 
+;; 修改文字大小
+ (set-face-attribute 'default nil :height 130)
 ;; === 配置远程仓库 =====
 (require 'package)
 (package-initialize)
@@ -104,7 +106,10 @@
 
 ;;设置agenda的收集目录
 (define-key global-map "\C-ca" 'org-agenda)
-(setq org-agenda-files (list LXLEARN LXBASEDIR))
+(setq org-agenda-files (list
+			(concat LXLEARN "all.org")
+			(concat LXLEARN "coohua.org")
+			(concat LXBASEDIR "security/note.org")))
 ;;设置agenda的显示时间
 (setq org-agenda-span 10) 
 ;;设置起始日
@@ -281,49 +286,3 @@
 ;; slime to function definition
 (dolist (hook '(emacs-lisp-mode-hook ielm-mode-hook))
   (add-hook hook 'turn-on-elisp-slime-nav-mode))
-
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(ansi-color-faces-vector
-   [default default default italic underline success warning error])
- '(ansi-color-names-vector
-   ["black" "red3" "ForestGreen" "yellow3" "blue" "magenta3" "DeepSkyBlue" "gray50"])
- '(cfs--fontsize-steps (quote (5 4 4)) t)
- '(custom-safe-themes
-   (quote
-    ("e9db8b4c053619d0edf7f8b926e60a2743a697971edfd4cab65f731bfecfba60" "419637b7a8c9cb43f273980f0c9879c0cbadace6b38efac0281e031772c84eb2" "8db4b03b9ae654d4a57804286eb3e332725c84d7cdab38463cb6b97d5762ad26" "8aebf25556399b58091e533e455dd50a6a9cba958cc4ebb0aab175863c25b9a4" "d677ef584c6dfc0697901a44b885cc18e206f05114c8a3b7fde674fce6180879" "a8245b7cc985a0610d71f9852e9f2767ad1b852c2bdea6f4aadc12cce9c4d6d0" "0fb6369323495c40b31820ec59167ac4c40773c3b952c264dd8651a3b704f6b5" "3dafeadb813a33031848dfebfa0928e37e7a3c18efefa10f3e9f48d1993598d3" "02ae373bd026c39f46bea2850895627f64ef5ea830893c79fb5f5557d14b0fa7" default)))
- '(fci-rule-color "#383838")
- '(frame-background-mode (quote dark))
- '(org-agenda-files nil)
- '(vc-annotate-background "#2B2B2B")
- '(vc-annotate-color-map
-   (quote
-    ((20 . "#BC8383")
-     (40 . "#CC9393")
-     (60 . "#DFAF8F")
-     (80 . "#D0BF8F")
-     (100 . "#E0CF9F")
-     (120 . "#F0DFAF")
-     (140 . "#5F7F5F")
-     (160 . "#7F9F7F")
-     (180 . "#8FB28F")
-     (200 . "#9FC59F")
-     (220 . "#AFD8AF")
-     (240 . "#BFEBBF")
-     (260 . "#93E0E3")
-     (280 . "#6CA0A3")
-     (300 . "#7CB8BB")
-     (320 . "#8CD0D3")
-     (340 . "#94BFF3")
-     (360 . "#DC8CC3"))))
- '(vc-annotate-very-old-color "#DC8CC3"))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- )
-
