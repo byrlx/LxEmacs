@@ -1,8 +1,6 @@
 ;;我的emacs环境入口
 ;;Author: luis404(luisxu404@gmail.com)
 
-;; 修改文字大小
- (set-face-attribute 'default nil :height 130)
 ;; === 配置远程仓库 =====
 (require 'package)
 (package-initialize)
@@ -15,6 +13,23 @@
 ;; 设置backup路径 ~文件的存放地
 (add-to-list 'load-path "~/.emacs.d/download/")
 (add-to-list 'load-path "~/.emacs.d/lx/") ;;my custome folder
+
+;; 使用emacs做ppt 
+(autoload 'org-present "org-present" nil t)
+(eval-after-load "org-present"
+  '(progn
+     (add-hook 'org-present-mode-hook
+               (lambda ()
+                 (org-present-big)
+                 (org-display-inline-images)
+                 (org-present-hide-cursor)
+                 (org-present-read-only)))
+     (add-hook 'org-present-mode-quit-hook
+               (lambda ()
+                 (org-present-small)
+                 (org-remove-inline-images)
+                 (org-present-show-cursor)
+                 (org-present-read-write)))))
 
 ;;设置语言环境
 (setenv "LANG" "en_US.UTF-8")
