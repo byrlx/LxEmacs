@@ -70,8 +70,9 @@
 ;;自动更新blog
 (defun lx-update-blog ()
   (interactive)
-  (org-publish "github-blog")
-  (shell-command (concat "cd " LXBLOG " && git add -A && git ci -m 'update blog' && git push")))
+  (org-publish "worg")
+  (shell-command (concat "cd " LXBLOG " && git add -A && git ci -m 'update blog' && git push"))
+  (shell-command (concat "cd " LXBLOGORG " && git add -A && git ci -m 'update blogsrc' && git push")))
 (global-set-key (kbd "<f9>") 'lx-update-blog)
 
 (defun lx-add-running-today (km loc)
